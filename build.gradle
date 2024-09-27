@@ -36,6 +36,12 @@ dependencies {
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 	developmentOnly("org.springframework.boot:spring-boot-devtools")
 	implementation 'org.flywaydb:flyway-core'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testImplementation 'org.mockito:mockito-core'
+	implementation 'com.fasterxml.jackson.core:jackson-databind:2.14.0'
+	implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.7.3'
+
+
 
 }
 

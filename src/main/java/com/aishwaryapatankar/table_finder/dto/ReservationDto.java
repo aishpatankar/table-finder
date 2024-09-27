@@ -1,9 +1,7 @@
 package com.aishwaryapatankar.table_finder.dto;
 
 import jakarta.persistence.*;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import org.springframework.data.annotation.Id;
 
 import java.time.LocalDateTime;
@@ -12,6 +10,8 @@ import java.util.List;
 @Getter
 @Setter
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class ReservationDto {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
