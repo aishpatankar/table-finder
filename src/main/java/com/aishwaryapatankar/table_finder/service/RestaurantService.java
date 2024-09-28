@@ -39,10 +39,11 @@ public class RestaurantService {
                 .flatMap(diner -> diner.getDietaryRestrictions().stream())
                 .distinct()
                 .collect(Collectors.toList());
-        System.out.println("Dietary Restrictions num " + dietaryRestrictions.size());
 
-        List<Restaurant> compatibleRestaurantEntities = restaurantRepository.findRestaurantWithAllEndorsements(dietaryRestrictions, dietaryRestrictions.size());
-        System.out.println("Found restaurants num " + compatibleRestaurantEntities.size());
+
+        List<Restaurant> compatibleRestaurantEntities = dietaryRestrictions.size() > 0 ?
+                restaurantRepository.findRestaurantWithAllEndorsements(dietaryRestrictions, dietaryRestrictions.size()) :
+                restaurantRepository.findAll();
 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         LocalDateTime time = LocalDateTime.parse(restaurantRequest.getTime(), formatter);
