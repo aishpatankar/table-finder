@@ -31,8 +31,83 @@ Get request to find restaurants for list of diners
             ],
         "time": "2024-09-27 14:45:30"
     }
+    Expected response 
+    {
+        "restaurantList": [
+            {
+                "id": 2,
+                "name": "Panadería Rosetta",
+                "endorsements": [
+                    "Gluten Free",
+                    "Vegetarian"
+                ]
+            },
+            {
+                "id": 5,
+                "name": "u.to.pi.a",
+                "endorsements": [
+                    "Vegan",
+                    "Vegetarian"
+                ]
+            }
+        ]
+    }
 
-        
+Post request to create a reservation
+
+    Post http://localhost:8080/api/reservations/create
+    Sample request
+    {
+        "diners": [
+            {
+                "id": 1,
+                "name": "Michael",
+                "dietaryRestrictions": [
+                    "Vegetarian"
+                ]
+            }
+        ],
+        "table": {
+            "id": 1,
+            "capacity": 2,
+            "restaurant": {
+                "id": 1,
+                "name": "Lardo",
+                "endorsements": [
+                    "Gluten Free"
+                ]
+            }
+        },
+        "time": "2024-09-27 14:45:30"
+    }
+    Expected response
+
+    {
+        "id": 1,
+        "dinerDtos": [
+            {
+                "id": 1,
+                "name": "Michael",
+                "dietaryRestrictions": [
+                    "Vegetarian"
+                ]
+            }
+        ],
+        "table": {
+        "id": 1,
+        "capacity": 2,
+        "restaurant": {
+            "id": 1,
+            "name": "Lardo",
+            "endorsements": [
+                "Gluten Free "
+            ]
+        }
+    },
+        "reservationTime": "2024-09-27 14:45:30"
+    }
+    
+            
 
 
 

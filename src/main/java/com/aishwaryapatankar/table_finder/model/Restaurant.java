@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import java.util.List;
@@ -14,21 +15,11 @@ import java.util.List;
 @Table(name = "restaurants")
 @AllArgsConstructor
 @NoArgsConstructor
+@Getter
 public class Restaurant {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String name;
-
-    @ElementCollection
-    private List<String> endorsements;
-
-    public RestaurantDto convertToDto() {
-        return RestaurantDto.builder()
-                .endorsements(endorsements)
-                .name(name)
-                .id(id)
-                .build();
-    }
 }

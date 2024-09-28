@@ -1,6 +1,5 @@
 package com.aishwaryapatankar.table_finder.dto;
 
-import com.aishwaryapatankar.table_finder.model.Restaurant;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import lombok.*;

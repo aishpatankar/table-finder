@@ -4,6 +4,7 @@ package com.aishwaryapatankar.table_finder.controller;
 import com.aishwaryapatankar.table_finder.dto.DinerDto;
 import com.aishwaryapatankar.table_finder.dto.FindRestaurantRequest;
 import com.aishwaryapatankar.table_finder.dto.MatchingRestaurants;
+import com.aishwaryapatankar.table_finder.dto.RestaurantDto;
 import com.aishwaryapatankar.table_finder.model.Restaurant;
 import com.aishwaryapatankar.table_finder.service.RestaurantService;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -48,24 +49,19 @@ public class RestaurantControllerTest {
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.findAndRegisterModules();
 
-        List<Restaurant> existingRestaurant = new ArrayList<>();
-        existingRestaurant.add(Restaurant.builder()
-                        .id(1L)
-                        .endorsements(List.of("Vegetarian"))
-                        .name("Veggie Grill")
-                .build());
         MatchingRestaurants mockedRestaurantList = MatchingRestaurants
                 .builder()
-                .restaurantList(existingRestaurant
-                        .stream()
-                        .map(Restaurant::convertToDto)
-                        .collect(Collectors.toList()))
+                .restaurantList(List.of(RestaurantDto.builder()
+                                .endorsements(List.of("Vegetarian"))
+                                .name("Veggie Grill")
+                                .id(1L)
+                        .build()))
                 .build();
 
         when(restaurantService.findAvailableRestaurants(any())).thenReturn(mockedRestaurantList);
 
         String request = objectMapper.writeValueAsString(FindRestaurantRequest.builder()
-                .diners(List.of(DinerDto.builder().dietaryRestrictions(List.of("Vegetarian")).build()))
+                .diners(List.of(DinerDto.builder().name("Mike").dietaryRestrictions(List.of("Vegetarian")).build()))
                 .time("2024-09-27 14:45:30")
                 .build());
 
