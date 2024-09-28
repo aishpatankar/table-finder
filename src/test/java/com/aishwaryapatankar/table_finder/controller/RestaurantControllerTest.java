@@ -4,7 +4,7 @@ package com.aishwaryapatankar.table_finder.controller;
 import com.aishwaryapatankar.table_finder.dto.DinerDto;
 import com.aishwaryapatankar.table_finder.dto.FindRestaurantRequest;
 import com.aishwaryapatankar.table_finder.dto.MatchingRestaurants;
-import com.aishwaryapatankar.table_finder.model.RestaurantEntity;
+import com.aishwaryapatankar.table_finder.model.Restaurant;
 import com.aishwaryapatankar.table_finder.service.RestaurantService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.BeforeEach;
@@ -19,7 +19,6 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -49,8 +48,8 @@ public class RestaurantControllerTest {
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.findAndRegisterModules();
 
-        List<RestaurantEntity> existingRestaurant = new ArrayList<>();
-        existingRestaurant.add(RestaurantEntity.builder()
+        List<Restaurant> existingRestaurant = new ArrayList<>();
+        existingRestaurant.add(Restaurant.builder()
                         .id(1L)
                         .endorsements(List.of("Vegetarian"))
                         .name("Veggie Grill")
@@ -59,7 +58,7 @@ public class RestaurantControllerTest {
                 .builder()
                 .restaurantList(existingRestaurant
                         .stream()
-                        .map(RestaurantEntity::convertToDto)
+                        .map(Restaurant::convertToDto)
                         .collect(Collectors.toList()))
                 .build();
 
@@ -67,7 +66,7 @@ public class RestaurantControllerTest {
 
         String request = objectMapper.writeValueAsString(FindRestaurantRequest.builder()
                 .diners(List.of(DinerDto.builder().dietaryRestrictions(List.of("Vegetarian")).build()))
-                .time(LocalDateTime.now())
+                .time("2024-09-27 14:45:30")
                 .build());
 
         mockMvc.perform(MockMvcRequestBuilders.

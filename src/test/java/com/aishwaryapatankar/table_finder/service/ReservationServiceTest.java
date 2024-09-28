@@ -61,7 +61,7 @@ class ReservationServiceTest {
                 "      ]\n" +
                 "    }\n" +
                 "  },\n" +
-                "  \"time\": \"2024-09-27T14:45:30\"\n" +
+                "  \"time\": \"2024-09-27 14:45:30\"\n" +
                 "}";
         ReservationRequest request = objectMapper.readValue(jsonInput, ReservationRequest.class);
     }

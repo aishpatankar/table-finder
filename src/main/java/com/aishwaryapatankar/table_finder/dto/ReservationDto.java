@@ -29,6 +29,6 @@ public class ReservationDto {
     @JoinColumn(name = "table_id")
     private TableDto table;
 
-    private LocalDateTime reservationTime;
+    private String reservationTime;
 
 }

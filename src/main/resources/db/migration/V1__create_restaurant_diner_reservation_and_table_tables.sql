@@ -1,7 +1,6 @@
 CREATE TABLE restaurants (
     id SERIAL PRIMARY KEY,
-    name VARCHAR(255) NOT NULL,
-    endorsements VARCHAR(255)[]
+    name VARCHAR(255) NOT NULL
 );
 
 CREATE TABLE diners (
@@ -19,7 +18,15 @@ CREATE TABLE tables (
 CREATE TABLE reservations (
     id SERIAL PRIMARY KEY,
     table_id INT REFERENCES tables (id),
-    restaurant_id INT REFERENCES restaurants(id),
-    diner_id INT REFERENCES diners(id),
+    reservation_diners INT[],
     reservation_time TIMESTAMP NOT NULL
 );
+
+CREATE TABLE restaurant_endorsements (
+    id SERIAL PRIMARY KEY,
+    restaurant_id INT REFERENCES restaurants(id),
+    endorsement_name VARCHAR(256) NOT NULL
+);
+
+CREATE INDEX idx_restaurant_endorsement_name
+ON restaurant_endorsements(endorsement_name);

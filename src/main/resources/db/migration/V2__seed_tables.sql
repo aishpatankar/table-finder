@@ -1,16 +1,16 @@
-INSERT INTO restaurants (name, endorsements)
+INSERT INTO restaurants (name)
 VALUES
-('Lardo', ARRAY['Gluten Free Options']),
-('Panadería Rosetta', ARRAY['Vegetarian-Friendly', 'Gluten Free Options']),
-('Tetetlán', ARRAY['Paleo-friendly', 'Gluten Free Options']),
-('Falling Piano Brewing Co', NULL),
-('u.to.pi.a', ARRAY['Vegan-Friendly', 'Vegetarian-Friendly']);
+('Lardo'),
+('Panadería Rosetta'),
+('Tetetlán'),
+('Falling Piano Brewing Co'),
+('u.to.pi.a');
 
 INSERT INTO diners (name, dietary_restrictions)
 VALUES
 ('Michael', ARRAY['Vegetarian']),
-('George Michael', ARRAY['Vegetarian', 'Gluten-Free']),
-('Lucile', ARRAY['Gluten-Free']),
+('George Michael', ARRAY['Vegetarian', 'Gluten Free']),
+('Lucile', ARRAY['Gluten Free']),
 ('Gob', ARRAY['Paleo']),
 ('Tobias', NULL),
 ('Maeby', ARRAY['Vegan']);
@@ -73,3 +73,12 @@ BEGIN
         INSERT INTO tables (restaurant_id, capacity) VALUES ((SELECT id FROM restaurants WHERE name='u.to.pi.a'), 2);
     END LOOP;
 END $$;
+
+
+INSERT INTO restaurant_endorsements (restaurant_id, endorsement_name) VALUES ((SELECT id FROM restaurants WHERE name='Lardo'), 'Gluten Free');
+INSERT INTO restaurant_endorsements (restaurant_id, endorsement_name) VALUES ((SELECT id FROM restaurants WHERE name='Panadería Rosetta'), 'Gluten Free');
+INSERT INTO restaurant_endorsements (restaurant_id, endorsement_name) VALUES ((SELECT id FROM restaurants WHERE name='Panadería Rosetta'), 'Vegetarian');
+INSERT INTO restaurant_endorsements (restaurant_id, endorsement_name) VALUES ((SELECT id FROM restaurants WHERE name='Tetetlán'), 'Paleo');
+INSERT INTO restaurant_endorsements (restaurant_id, endorsement_name) VALUES ((SELECT id FROM restaurants WHERE name='Tetetlán'), 'Gluten Free');
+INSERT INTO restaurant_endorsements (restaurant_id, endorsement_name) VALUES ((SELECT id FROM restaurants WHERE name='u.to.pi.a'), 'Vegan');
+INSERT INTO restaurant_endorsements (restaurant_id, endorsement_name) VALUES ((SELECT id FROM restaurants WHERE name='u.to.pi.a'), 'Vegetarian');

@@ -4,7 +4,7 @@ import com.aishwaryapatankar.table_finder.dto.DinerDto;
 import com.aishwaryapatankar.table_finder.dto.ReservationRequest;
 import com.aishwaryapatankar.table_finder.dto.RestaurantDto;
 import com.aishwaryapatankar.table_finder.dto.TableDto;
-import com.aishwaryapatankar.table_finder.model.DinerEntity;
+import com.aishwaryapatankar.table_finder.model.Diner;
 import com.aishwaryapatankar.table_finder.service.ReservationService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.BeforeEach;
@@ -19,11 +19,9 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.when;
 
 public class ReservationControllerTest {
 
@@ -48,14 +46,14 @@ public class ReservationControllerTest {
         objectMapper.findAndRegisterModules();
 
         List<DinerDto> dinerDtoList = List.of(DinerDto.builder().id(1L).name("Aishwarya").dietaryRestrictions(List.of("Vegetarian")).build());
-        List<DinerEntity> dinerEntitiesList = List.of(dinerDtoList.get(0).convertToEntity());
+        List<Diner> dinerEntitiesList = List.of(dinerDtoList.get(0).convertToEntity());
         RestaurantDto restaurantDto = RestaurantDto.builder().id(1L).name("Veggie Grill").endorsements(List.of("Vegetarian")).build();
         TableDto tableDto = TableDto.builder().id(1L).capacity(2).restaurant(restaurantDto).build();
 
         String request = objectMapper.writeValueAsString(ReservationRequest.builder()
                 .diners(dinerDtoList)
                 .table(tableDto)
-                .time(LocalDateTime.now())
+                .time("2024-09-27 14:45:30")
                 .build());
 
         mockMvc.perform(MockMvcRequestBuilders.

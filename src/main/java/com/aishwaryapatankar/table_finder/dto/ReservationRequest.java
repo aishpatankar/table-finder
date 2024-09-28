@@ -19,5 +19,5 @@ public class ReservationRequest {
     TableDto table;
 
     @NotEmpty(message = "Time missing")
-    LocalDateTime time;
+    String time;
 }

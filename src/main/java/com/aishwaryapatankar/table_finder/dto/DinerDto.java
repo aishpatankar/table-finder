@@ -1,6 +1,6 @@
 package com.aishwaryapatankar.table_finder.dto;
 
-import com.aishwaryapatankar.table_finder.model.DinerEntity;
+import com.aishwaryapatankar.table_finder.model.Diner;
 import lombok.*;
 
 import java.util.List;
@@ -17,8 +17,8 @@ public class DinerDto {
 
     private List<String> dietaryRestrictions;
 
-    public DinerEntity convertToEntity() {
-        return DinerEntity
+    public Diner convertToEntity() {
+        return Diner
                 .builder()
                 .id(id)
                 .name(name)

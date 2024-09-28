@@ -1,15 +1,16 @@
 package com.aishwaryapatankar.table_finder.model;
 
 import jakarta.persistence.*;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 @Getter
 @Setter
 @Builder
 @Entity
-public class TableEntity {
+@jakarta.persistence.Table(name = "tables")
+@AllArgsConstructor
+@NoArgsConstructor
+public class Table {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -18,5 +19,5 @@ public class TableEntity {
 
     @ManyToOne
     @JoinColumn(name = "restaurant_id")
-    private RestaurantEntity restaurant;
+    private Restaurant restaurant;
 }

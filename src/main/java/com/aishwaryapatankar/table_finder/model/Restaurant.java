@@ -1,23 +1,27 @@
 package com.aishwaryapatankar.table_finder.model;
 
 import com.aishwaryapatankar.table_finder.dto.RestaurantDto;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
 
 @Entity
 @Builder
-public class RestaurantEntity {
+@Table(name = "restaurants")
+@AllArgsConstructor
+@NoArgsConstructor
+public class Restaurant {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String name;
 
+    @ElementCollection
     private List<String> endorsements;
 
     public RestaurantDto convertToDto() {

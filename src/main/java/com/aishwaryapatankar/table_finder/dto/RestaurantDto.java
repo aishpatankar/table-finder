@@ -1,6 +1,6 @@
 package com.aishwaryapatankar.table_finder.dto;
 
-import com.aishwaryapatankar.table_finder.model.RestaurantEntity;
+import com.aishwaryapatankar.table_finder.model.Restaurant;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import lombok.*;
@@ -19,12 +19,4 @@ public class RestaurantDto {
     private Long id;
     private String name;
     private List<String> endorsements;
-
-    public RestaurantEntity convertToEntity() {
-        return RestaurantEntity.builder()
-                .id(id)
-                .name(name)
-                .endorsements(endorsements)
-                .build();
-    }
 }
