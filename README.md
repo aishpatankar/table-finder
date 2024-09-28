@@ -29,7 +29,7 @@ Get request to find restaurants for list of diners
                     "dietaryRestrictions": ["Vegetarian"]
                 }
             ],
-        "time": "2024-09-27 14:45:30"
+        "time": "2024-09-27 14:45:00"
     }
     Expected response 
     {
@@ -78,7 +78,7 @@ Post request to create a reservation
                 ]
             }
         },
-        "time": "2024-09-27 14:45:30"
+        "time": "2024-09-27 14:45:00"
     }
     Expected response
 
@@ -104,7 +104,7 @@ Post request to create a reservation
             ]
         }
     },
-        "reservationTime": "2024-09-27 14:45:30"
+        "reservationTime": "2024-09-27 14:45:00"
     }
     
             
