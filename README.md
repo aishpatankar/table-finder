@@ -1,7 +1,7 @@
 # Getting Started
 
 ### Starting up the db
-1. Start Postgres Server for port 542
+1. Start Postgres Server for port 5432
 2. Connect `psql -U your_username -h localhost`
 3. See current databases `\l`
 4. Create the database for your local environment `CREATE DATABASE tablefinderdb;`'
