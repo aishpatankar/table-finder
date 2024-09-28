@@ -5,7 +5,6 @@ import com.aishwaryapatankar.table_finder.dto.DinerDto;
 import com.aishwaryapatankar.table_finder.dto.FindRestaurantRequest;
 import com.aishwaryapatankar.table_finder.dto.MatchingRestaurants;
 import com.aishwaryapatankar.table_finder.dto.RestaurantDto;
-import com.aishwaryapatankar.table_finder.model.Restaurant;
 import com.aishwaryapatankar.table_finder.service.RestaurantService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.BeforeEach;
